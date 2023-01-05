@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8000:5000
+    volumes:
+      - ./:/app
+
+  mysqldb:
+    image: mysql
+    ports:
+      - 3066:3066
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - mysql_1:/var/lib/mysql
+      - mysql_1_config:/etc/mysql
+
+volumes:
+  mysql_1:
+  mysql_1_config:
